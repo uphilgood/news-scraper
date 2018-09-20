@@ -104,7 +104,7 @@ $(document).on("click", "#deletenote", function () {
       // Log the response
       console.log(data);
       alert("Note Deleted!")
-      location.replace("/")
+      location.reload()
     });
 });
 
