@@ -1,0 +1,33 @@
+<div class="jumbotron">
+{{#if data.articleNote.note}}
+    <div class="card">
+        <div class="card-header">
+            Your Notes
+            <div class="card-body">
+                {{#each data.articleNote.note}}
+                <h3 class="card-title">{{this.title}}</h3>
+                <p class="card-text">{{this.body}}</p>
+                <a id="deletenote" data-id={{this._id}} class="btn btn-primary">Delete</a>
+                {{!-- data-toggle="modal" data-target="#commentModal" --}} {{/each}}
+
+            </div>
+        </div>
+    </div>
+    {{/if}}
+ 
+
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Title</label>
+            <input type="text" class="form-control" id="titleinput" aria-describedby="emailHelp" placeholder="Title">
+        </div>
+
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Note</label>
+            <textarea class="form-control" id="notetextarea" rows="3"></textarea>
+        </div>
+        <br/>
+        <button type="submit" data-id={{data.articleNote._id}} id="submitnote" class="btn btn-primary">Submit</button>
+    </form>
+</div>

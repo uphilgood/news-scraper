@@ -1,0 +1,34 @@
+<table class="table table-bordered">
+  <nav class="navbar navbar-expand-sm bg-dark">
+
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" style="font-family: 'Pacifico', cursive; color: white;" href="/">Home</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" style="font-family: 'Pacifico', cursive; color: white;" href="/saved-articles">View Saved Artciles</a>
+    </li>
+
+</nav>
+  
+  
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+       {{#each data.savedArticles}}
+    <tr>
+      <td data-id={{this._id}}><a href={{this.link}}><h3>{{this.title}}</h3></a></td>
+      
+      <td><a data-id={{this._id}} class="btn btn-secondary btn-lg active" id="delete-saved" role="button" aria-pressed="true" >Remove</a></td>
+
+{{!-- data-toggle="modal" data-target="#commentModal" --}}
+    </tr>
+     {{/each}}
+
+  </tbody>
+</table>
