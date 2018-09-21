@@ -43,7 +43,8 @@ $(document).on("click", "#view-comment", function () {
 });
 
 // When you click the savenote button
-$(document).on("click", "#submitnote", function () {
+$(document).on("click", "#submitnote", function (event) {
+  event.preventDefault()
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
