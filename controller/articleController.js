@@ -5,9 +5,12 @@ var cheerio = require("cheerio");
 var db = require("../models");
 var bodyParser = require("body-parser");
 var app = express();
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news-scraper3";
 
+// Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/news-scraper3");
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // Routes
 
