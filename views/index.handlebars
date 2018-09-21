@@ -12,9 +12,13 @@
 </nav>
 
 <br/>
-<h1 class="display-4" style="font-family: 'Pacifico', cursive; text-align: center; color:white" id="indexTitle">Reddit Scrapper!</h1>
+<h1 class="display-4" style="font-family: 'Pacifico', cursive; text-align: center; color:black" id="indexTitle">Reddit Scrapper!</h1>
 <br/>
+{{#unless data.dbArticle}}
+<button type="button" class="btn btn-primary btn-lg btn-block" id="scrape-button" >Scrape New Posts!</button>
+{{/unless}}
 
+{{#if data.dbArticle}}
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -26,7 +30,7 @@
   <tbody>
        {{#each data.dbArticle}}
     <tr>
-      <td data-id={{this._id}}><a href={{this.link}}><h3>{{this.title}}</h3></a></td>
+      <td data-id={{this._id}}><a href="https://www.reddit.com/{{this.link}}"><h3>{{this.title}}</h3></a></td>
       
       <td><a data-id={{this._id}} class="btn btn-secondary btn-lg active" id="view-comment" role="button" aria-pressed="true" >Comment</a></td>
       <td><a data-id={{this._id}} class="btn btn-secondary btn-lg active" id="save-article" role="button" aria-pressed="true" >Save Article</a></td>
@@ -36,6 +40,7 @@
 
   </tbody>
 </table>
+{{/if}}
 
 <br/>
 

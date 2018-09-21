@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 var app = express();
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/news-scraper2");
+mongoose.connect("mongodb://localhost/news-scraper3");
 
 // Routes
 
@@ -148,5 +148,19 @@ app.delete("/delete-note/:id", function (req, res) {
       res.json(err);
     });
 });
+
+//delete saved
+app.post("/delete-saved/:id", function (req, res) {
+  db.Article.findOneAndUpdate(
+    { "_id" : req.params.id },
+    { saved: false }
+  ).then(function(data) {
+    res.json(data)
+  }).catch(function (err) {
+    res.json(err)
+  })
+  
+
+})
 
 module.exports = app;

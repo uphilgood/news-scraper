@@ -8,6 +8,20 @@
 // });
 
 
+//scrape articles
+$(document).on("click", "#scrape-button", function () {
+  $.ajax({
+      method: "GET",
+      url: "/scrape"
+    })
+    .then(function (data) {
+      console.log(data);
+      location.replace("/")
+
+    });
+});
+
+
 // Whenever someone clicks a p tag
 $(document).on("click", "#view-comment", function () {
   // Empty the notes from the note section
@@ -80,6 +94,7 @@ $(document).on("click", "#save-article", function () {
         // Log the response
         console.log(data);
         alert("Article Saved!")
+        location.reload()
       }
     });
 });
@@ -108,3 +123,26 @@ $(document).on("click", "#deletenote", function () {
     });
 });
 
+// delete saved
+$(document).on("click", "#delete-saved", function () {
+  confirm("Are you sure?")
+  // Grab the id associated with the article from the submit button
+  var thisId = $(this).attr("data-id");
+  console.log(thisId)
+
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+      method: "POST",
+      url: "/delete-saved/" + thisId,
+      data: {
+        id: thisId
+      }
+    })
+    // With that done
+    .then(function (data) {
+      // Log the response
+      console.log(data);
+      alert("Removed Articled from Saved!")
+      location.reload()
+    });
+});
