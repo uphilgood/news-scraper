@@ -69,6 +69,7 @@ $(document).on("click", "#submitnote", function () {
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#notetextarea").val("");
+  location.reload()
 });
 
 
